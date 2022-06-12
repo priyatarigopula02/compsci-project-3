@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib as mpl
+import matplotlib.pyplot as plt
+from matplotlib import cm
 
 
 def detpep10exp(x1, x2, x3):
@@ -17,7 +19,8 @@ def detpep10exp(x1, x2, x3):
     return y
 
 
-def load_detpep10exp_dataset(n_samples, sample_range=(0, 1)):
+def load_detpep10exp_dataset(n_samples,
+                             sample_range=(0, 1)):
     """Returns a dataset derived from the detpep10exp function.
 
     Parameters
@@ -41,3 +44,35 @@ def plot_init():
     """
     mpl.rcParams['axes.spines.right'] = False
     mpl.rcParams['axes.spines.top'] = False
+
+
+def plot_3d(x,
+            y,
+            figsize=(10, 10),
+            vmin=None,
+            vmax=None):
+    """Creates a 3d plot for 3 features (explanatory variables) and 1 response variable.
+
+    Parameters
+    ----------
+    x: ndarray of shape (n_samples, 3)
+        Coordinates of samples.
+    y: ndarray of shape (n_samples,)
+        Values corresponding to coordinates.
+    figsize: tuple
+        Size of figure.
+    vmin: int, optional
+        Lower limit of color scale.
+    vmax: int, optional
+        Upper limit of color scale.
+    """
+    fig = plt.figure(figsize=figsize)
+    ax = fig.add_subplot(111, projection='3d')
+    im = ax.scatter(x[:, 0], x[:, 1], x[:, 2], c=y, cmap=cm.jet)
+    if vmin is not None and vmax is not None:
+        im.set_clim(vmin=vmin, vmax=vmax)
+    ax.set_xlabel('x1')
+    ax.set_ylabel('x2')
+    ax.set_zlabel('x3')
+    plt.colorbar(im, fraction=0.026, pad=0.04)
+    plt.show()
