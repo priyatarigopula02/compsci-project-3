@@ -55,7 +55,7 @@ def plot_3d(x,
             colorbar=True,
             cmap=None,
             alpha=1.):
-    """Creates a 3d plot for 3 features (explanatory variables) and 1 response variable.
+    """Creates a 3d scatter plot for 3 features (explanatory variables) and 1 response variable.
 
     Parameters
     ----------
@@ -69,6 +69,14 @@ def plot_3d(x,
         Lower limit of color scale.
     vmax: int, optional
         Upper limit of color scale.
+    ax: axis object, optional
+        If provided 3d plot will be added to this axis, otherwise new figure is created.
+    colorbar: bool
+        Whether to add a colorbar or not.
+    cmap: cmap, optional
+        If not provided, jet cmap is used as default.
+    alpha: float, optional
+        Opacity, of the datapoints.
     """
     if ax is None:
         fig = plt.figure(figsize=figsize)
