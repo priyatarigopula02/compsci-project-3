@@ -50,7 +50,11 @@ def plot_3d(x,
             y,
             figsize=(10, 10),
             vmin=None,
-            vmax=None):
+            vmax=None,
+            ax=None,
+            colorbar=True,
+            cmap=None,
+            alpha=1.):
     """Creates a 3d plot for 3 features (explanatory variables) and 1 response variable.
 
     Parameters
@@ -66,13 +70,17 @@ def plot_3d(x,
     vmax: int, optional
         Upper limit of color scale.
     """
-    fig = plt.figure(figsize=figsize)
-    ax = fig.add_subplot(111, projection='3d')
-    im = ax.scatter(x[:, 0], x[:, 1], x[:, 2], c=y, cmap=cm.jet)
+    if ax is None:
+        fig = plt.figure(figsize=figsize)
+        ax = fig.add_subplot(111, projection='3d')
+    if cmap is None:
+        cmap = cm.jet
+    im = ax.scatter(x[:, 0], x[:, 1], x[:, 2], c=y, cmap=cmap, alpha=alpha)
     if vmin is not None and vmax is not None:
         im.set_clim(vmin=vmin, vmax=vmax)
     ax.set_xlabel('x1')
     ax.set_ylabel('x2')
     ax.set_zlabel('x3')
-    plt.colorbar(im, fraction=0.026, pad=0.04)
-    plt.show()
+    if colorbar:
+        plt.colorbar(im, fraction=0.026, pad=0.04)
+    return ax
