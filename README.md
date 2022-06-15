@@ -7,7 +7,7 @@ This project contains all experiments and analyses for project 3 of the compsci 
 The structure of the project is as follows
 
 ```
-compsci-project-3/
+compsci-project-3/src/
 │
 ├── analysis.ipynb - contains core analysis, all experiments discussed in report
 ├── visualizations.ipynb - visualizations of the function used in this project
