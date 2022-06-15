@@ -9,7 +9,7 @@ The structure of the project is as follows
 ```
 compsci-project-3/src/
 │
-├── analysis.ipynb - contains core analysis, all experiments discussed in report
-├── visualizations.ipynb - visualizations of the function used in this project
-└── common.py - helper functions 
+├── 01_visualizations.ipynb - visualizations of the function used in this project 
+├── 02_analysis.ipynb - contains core analysis, all experiments discussed in report 
+└── common.py - helper functions
 ```
